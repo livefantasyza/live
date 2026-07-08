@@ -1039,7 +1039,245 @@
             .request-modal-body { padding: 20px; }
         }
 
+        .btn-large.groups { background: linear-gradient(135deg, var(--secondary), #db2777); color: white; }
+        .btn-large.groups:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.5); }
+        /* ===== JOIN LIVE GROUPS MODAL ===== */
+        .groups-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.92);
+            backdrop-filter: blur(16px);
+            z-index: 10003;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .groups-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .groups-modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .groups-modal-overlay.active .groups-modal {
+            transform: translateY(0) scale(1);
+        }
+        .groups-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .groups-modal-close:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+            color: white;
+        }
+        .groups-modal-header {
+            padding: 32px 32px 0;
+            text-align: center;
+        }
+        .groups-modal-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .groups-modal-header p {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .groups-modal-body {
+            padding: 28px 32px 32px;
+        }
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .group-card {
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .group-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px -12px rgba(236, 72, 153, 0.25);
+        }
+        .group-card-header {
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .group-card:nth-child(1) .group-card-header {
+            background: linear-gradient(135deg, var(--secondary), #db2777);
+        }
+        .group-card:nth-child(2) .group-card-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        .group-card:nth-child(3) .group-card-header {
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+        }
+        .group-card-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+        }
+        .group-card-header .group-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+        .group-card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .group-bio {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+        .group-features {
+            margin-bottom: 16px;
+        }
+        .group-features h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .group-features ul {
+            list-style: none;
+        }
+        .group-features li {
+            font-size: 13px;
+            color: var(--text);
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .group-features li i {
+            color: var(--success);
+            font-size: 12px;
+            width: 16px;
+        }
+        .group-pricing {
+            background: rgba(99, 102, 241, 0.06);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+        .pricing-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        .pricing-option:last-child {
+            border-bottom: none;
+        }
+        .pricing-option .plan-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .pricing-option .plan-price {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .btn-join-group {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        .group-card:nth-child(1) .btn-join-group {
+            background: linear-gradient(135deg, var(--secondary), #db2777);
+        }
+        .group-card:nth-child(2) .btn-join-group {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        .group-card:nth-child(3) .btn-join-group {
+            background: linear-gradient(135deg, var(--accent), #0891b2);
+        }
+        .btn-join-group:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .groups-grid {
+                grid-template-columns: 1fr;
+            }
+            .groups-modal-header h2 {
+                font-size: 22px;
+            }
+            .groups-modal-body {
+                padding: 20px;
+            }
+            .groups-modal-header {
+                padding: 24px 20px 0;
+            }
+        }
     </style>
+<base target="_blank">
 <base target="_blank">
 <base target="_blank">
 <base target="_blank">
@@ -1072,12 +1310,13 @@
             <section class="hero">
                 <div class="hero-content">
                     <div class="hero-badge"><span class="live-dot"></span>Incoming video call</div>
-                    <h1>Private Video Chats<br>connect with horny models</h1>
+                    <h1>Private Video Chats<br>connect with amateur African models</h1>
                     <p>For your personal pleasure!</p>
                     <div class="hero-buttons">
                         <button class="btn-large join" onclick="showPage('register')"><i class="fas fa-user-plus"></i> Be A Model</button>
                         <button class="btn-large secondary" onclick="showPage('live-rooms')"><i class="fas fa-door-open"></i> Visit Our Playhouse</button>
-                        <button class="btn-large whatsapp" onclick="openRequestModal()"><i class="fas fa-video"></i> Request Model</button>
+                        <button class="btn-large groups" onclick="openGroupsModal()"><i class="fas fa-users"></i> Join Live Groups</button>
+                        <button class="btn-large whatsapp" onclick="openRequestModal()"><i class="fas fa-video"></i> Book a Model</button>
                     </div>
                 </div>
             </section>
@@ -1237,9 +1476,9 @@
                         <p>After submitting this form, you will be redirected to WhatsApp to complete your registration with additional required information (Video verification and profile photos).</p>
                     </div>
                     <div class="pricing-box">
-                        <div class="original">R350/month</div>
-                        <div class="discounted">R150 / 1 Month</div>
-                        <div class="discounted" style="margin-top:4px;">R350 / 3 Months</div>
+                        <div class="original">25/month</div>
+                        <div class="discounted">15 / 1 Month</div>
+                        <div class="discounted" style="margin-top:4px;">150s / 3 Months</div>
                         <div class="note">Special offer valid this month only!</div>
                     </div>
                     <form id="joinForm" onsubmit="handleJoinSubmit(event)">
@@ -1557,6 +1796,141 @@
         </div>
     </div>
 
+    <!-- Join Live Groups Modal -->
+    <div class="groups-modal-overlay" id="groupsModalOverlay" onclick="closeGroupsModal(event)">
+        <div class="groups-modal" onclick="event.stopPropagation()">
+            <button class="groups-modal-close" onclick="closeGroupsModal()" aria-label="Close groups modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="groups-modal-header">
+                <h2><i class="fas fa-users" style="color: var(--secondary); margin-right: 8px;"></i>Join Live Groups</h2>
+                <p>Choose your group and unlock unlimited live sessions with our hottest models. Pick a plan that fits your desires.</p>
+            </div>
+            <div class="groups-modal-body">
+                <div class="groups-grid">
+                    <!-- Group 1: Hardcore Playhouse -->
+                    <div class="group-card">
+                        <div class="group-card-header">
+                            <h3>Hardcore Playhouse</h3>
+                            <div class="group-subtitle">All-Day Access &middot; 5+ Models</div>
+                        </div>
+                        <div class="group-card-body">
+                            <div class="group-bio">
+                                Dive into our most intense group experience. Non-stop live action with 5+ beautiful models rotating throughout the day. Vote on who performs next, request private rooms, and enjoy unrestricted access to every session.
+                            </div>
+                            <div class="group-features">
+                                <h4>What's Included</h4>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 5+ Live Models Daily</li>
+                                    <li><i class="fas fa-check"></i> Vote for Next Performer</li>
+                                    <li><i class="fas fa-check"></i> Private Room Access</li>
+                                    <li><i class="fas fa-check"></i> Group Live Chat</li>
+                                    <li><i class="fas fa-check"></i> HD Video Quality</li>
+                                </ul>
+                            </div>
+                            <div class="group-pricing">
+                                <div class="pricing-option">
+                                    <span class="plan-name">Single Session</span>
+                                    <span class="plan-price">$10</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="plan-name">Weekly Pass</span>
+                                    <span class="plan-price">$25</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="plan-name">Monthly VIP</span>
+                                    <span class="plan-price">$80</span>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/27812797778?text=Hi! I want to join the Hardcore Playhouse group. Please send me payment details and next session times." class="btn-join-group" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Join Group
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Group 2: Teens & College Playhouse -->
+                    <div class="group-card">
+                        <div class="group-card-header">
+                            <h3>Teens & College Playhouse</h3>
+                            <div class="group-subtitle">Weekend Only &middot; Young Models</div>
+                        </div>
+                        <div class="group-card-body">
+                            <div class="group-bio">
+                                Fresh, young, and full of energy. Our exclusive weekend-only group features college girls and young models aged 18-22. Live sessions every Friday and Saturday night with interactive voting and private chat rooms.
+                            </div>
+                            <div class="group-features">
+                                <h4>What's Included</h4>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 10+ Young Models</li>
+                                    <li><i class="fas fa-check"></i> Weekend Sessions Only</li>
+                                    <li><i class="fas fa-check"></i> Private Rooms Available</li>
+                                    <li><i class="fas fa-check"></i> Group Live Chat</li>
+                                    <li><i class="fas fa-check"></i> Exclusive Content</li>
+                                </ul>
+                            </div>
+                            <div class="group-pricing">
+                                <div class="pricing-option">
+                                    <span class="plan-name">Single Session</span>
+                                    <span class="plan-price">$15</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="plan-name">Weekly Pass</span>
+                                    <span class="plan-price">$40</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="plan-name">Monthly VIP</span>
+                                    <span class="plan-price">$120</span>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/27812797778?text=Hi! I want to join the Teens & College Playhouse group. Please send me payment details and next session times." class="btn-join-group" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Join Group
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Group 3: Milf Playhouse -->
+                    <div class="group-card">
+                        <div class="group-card-header">
+                            <h3>Milf Playhouse</h3>
+                            <div class="group-subtitle">Weekend Only &middot; Experienced Models</div>
+                        </div>
+                        <div class="group-card-body">
+                            <div class="group-bio">
+                                For those who appreciate experience and confidence. Our Milf Playhouse features mature, sophisticated models who know exactly how to please. Weekend sessions packed with sensual performances and intimate group interactions.
+                            </div>
+                            <div class="group-features">
+                                <h4>What's Included</h4>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Experienced Mature Models</li>
+                                    <li><i class="fas fa-check"></i> Weekend Sessions Only</li>
+                                    <li><i class="fas fa-check"></i> Private Rooms Available</li>
+                                    <li><i class="fas fa-check"></i> Group Live Chat</li>
+                                    <li><i class="fas fa-check"></i> VIP Priority Access</li>
+                                </ul>
+                            </div>
+                            <div class="group-pricing">
+                                <div class="pricing-option">
+                                    <span class="plan-name">Single Session</span>
+                                    <span class="plan-price">$12</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="plan-name">Weekly Pass</span>
+                                    <span class="plan-price">$30</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="plan-name">Monthly VIP</span>
+                                    <span class="plan-price">$100</span>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/27812797778?text=Hi! I want to join the Milf Playhouse group. Please send me payment details and next session times." class="btn-join-group" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Join Group
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </main>
 
     <!-- Toast -->
@@ -2514,11 +2888,24 @@ Please let me know what models are available and how to proceed with booking.`;
             showToast('Request Sent!', 'Your model request has been sent. We will contact you shortly.');
         }
 
+        // Join Live Groups Modal Functions
+        function openGroupsModal() {
+            document.getElementById('groupsModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGroupsModal(e) {
+            if (e && e.target !== e.currentTarget) return;
+            document.getElementById('groupsModalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         // Close modal on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeProfileModal();
                 closeRequestModal();
+                closeGroupsModal();
             }
         });
 
